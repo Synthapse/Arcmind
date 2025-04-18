@@ -8,20 +8,6 @@ import Hero from './components/Hero';
 import Features from './components/Features';
 import Footer from './components/Footer';
 
-const App: React.FC = () => {
-  return (
-    <ThemeProvider theme={theme}>
-      <CssBaseline />
-      <Navbar />
-      <HashRouter>
-        <Routes>
-          <Route path="/" element={<Landing />} />
-        </Routes>
-      </HashRouter>
-    </ThemeProvider>
-  );
-};
-
 const Landing = () => {
   return (
     <>
@@ -32,4 +18,4 @@ const Landing = () => {
   )
 }
 
-export default App; 
+export default Landing; 
