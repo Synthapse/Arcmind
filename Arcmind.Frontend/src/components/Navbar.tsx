@@ -35,9 +35,9 @@ const Navbar: React.FC = () => {
       <Toolbar>
         <Logo variant="h6">Arcmind</Logo>
         <Box sx={{ flexGrow: 1 }} />
-        <NavButton>Features</NavButton>
+        {/* <NavButton>Features</NavButton>
         <NavButton>About</NavButton>
-        <NavButton>Contact</NavButton>
+        <NavButton>Contact</NavButton> */}
       </Toolbar>
     </StyledAppBar>
   );
