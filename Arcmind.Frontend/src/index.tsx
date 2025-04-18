@@ -16,17 +16,15 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <ThemeProvider theme={theme}>
-        <CssBaseline />
-        <Navbar />
-        <HashRouter>
-          <Routes>
-            <Route path="/" element={<Landing />} />
-          </Routes>
-        </HashRouter>
-      </ThemeProvider>
-    </BrowserRouter>
+    <ThemeProvider theme={theme}>
+      <CssBaseline />
+      <Navbar />
+      <HashRouter>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+        </Routes>
+      </HashRouter>
+    </ThemeProvider>
   </React.StrictMode>
 );
 
