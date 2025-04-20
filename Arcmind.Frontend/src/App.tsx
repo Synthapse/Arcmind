@@ -1,21 +1,39 @@
 import React from 'react';
 import { Routes, Route, HashRouter } from 'react-router-dom';
-import { ThemeProvider } from '@mui/material/styles';
-import CssBaseline from '@mui/material/CssBaseline';
-import { theme } from './theme';
 import Navbar from './components/Navbar';
 import Hero from './components/Hero';
 import Features from './components/Features';
 import Footer from './components/Footer';
+import ReadingMotivationSelector from './components/ReadingMotivationSelector';
+import PracticalNeeds from './components/PracticalNeeds';
+import ReadingArchetypes from './components/ReadingArchetypes';
 
 const Landing = () => {
   return (
-    <>
+    <div className="min-h-screen bg-background">
       <Hero />
       <Features />
+      <ReadingArchetypes />
+      <ReadingMotivationSelector />
       <Footer />
-    </>
+    </div>
   )
 }
 
-export default Landing; 
+const App = () => {
+  return (
+    <div className="min-h-screen bg-background font-sans antialiased">
+      <HashRouter>
+        <Navbar />
+        <main>
+          <Routes>
+            <Route path="/" element={<Landing />} />
+            <Route path="/practical-needs" element={<PracticalNeeds />} />
+          </Routes>
+        </main>
+      </HashRouter>
+    </div>
+  );
+};
+
+export default App; 

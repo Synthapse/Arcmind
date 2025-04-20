@@ -1,62 +1,5 @@
 import React from 'react';
-import { Box, Container, Grid, Typography, Card, CardContent } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
-const FeaturesSection = styled(Box)(({ theme }) => ({
-  padding: theme.spacing(12, 0),
-  backgroundColor: theme.palette.background.default,
-}));
-
-const SectionTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '2.5rem',
-  fontWeight: 700,
-  marginBottom: theme.spacing(2),
-  textAlign: 'center',
-  color: theme.palette.text.primary,
-}));
-
-const SectionSubtitle = styled(Typography)(({ theme }) => ({
-  fontSize: '1.2rem',
-  color: theme.palette.text.secondary,
-  textAlign: 'center',
-  marginBottom: theme.spacing(12),
-  maxWidth: '800px',
-  margin: '20px auto',
-  whiteSpace: 'nowrap',
-  overflow: 'hidden',
-  textOverflow: 'ellipsis',
-  [theme.breakpoints.down('sm')]: {
-    whiteSpace: 'normal',
-    marginBottom: theme.spacing(8),
-  },
-}));
-
-const FeatureCard = styled(Card)(({ theme }) => ({
-  height: '100%',
-  backgroundColor: '#F0E6D2', // Light beige background
-  borderRadius: theme.shape.borderRadius * 2,
-  transition: 'all 0.2s ease-in-out',
-  boxShadow: `0 4px 12px ${theme.palette.primary.light}33`,
-  '&:hover': {
-    transform: 'translateY(-4px)',
-    boxShadow: `0 8px 24px ${theme.palette.primary.light}66`,
-  },
-}));
-
-const FeatureTitle = styled(Typography)(({ theme }) => ({
-  fontSize: '1.2rem', // Smaller font
-  fontWeight: 600,
-  marginBottom: theme.spacing(1.5),
-  color: theme.palette.text.primary,
-  fontFamily: '"Poppins", sans-serif',
-}));
-
-const FeatureDescription = styled(Typography)(({ theme }) => ({
-  fontSize: '0.85rem', // Smaller font
-  color: theme.palette.text.secondary,
-  lineHeight: 1.5,
-  fontFamily: '"Poppins", sans-serif',
-}));
+import { Card, CardContent, CardHeader, CardTitle, CardDescription } from './ui/card';
 
 const features = [
   {
@@ -79,28 +22,31 @@ const features = [
 
 const Features: React.FC = () => {
   return (
-    <FeaturesSection>
-      <Container maxWidth="lg">
-        <SectionTitle variant="h2">Why Choose Arcmind?</SectionTitle>
-        <SectionSubtitle variant="h3">
-          Experience reading in a way that's tailored to your unique personality.
-        </SectionSubtitle>
-        <Grid container spacing={4}>
+    <section className="py-24 bg-muted/50">
+      <div className="container px-4 md:px-6">
+        <div className="flex flex-col items-center text-center space-y-4 mb-12">
+          <h2 className="text-3xl font-bold tracking-tight text-primary">Why Choose Arcmind?</h2>
+          <p className="text-xl text-muted-foreground max-w-[800px]">
+            Experience reading in a way that's tailored to your unique personality.
+          </p>
+        </div>
+        
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {features.map((feature, index) => (
-            <Grid item xs={12} sm={6} md={3} key={index}>
-              <FeatureCard elevation={0}>
-                <CardContent>
-                  <FeatureTitle variant="h3">{feature.title}</FeatureTitle>
-                  <FeatureDescription variant="body1">
-                    {feature.description}
-                  </FeatureDescription>
-                </CardContent>
-              </FeatureCard>
-            </Grid>
+            <Card key={index} className="group transition-all duration-300 hover:shadow-lg hover:-translate-y-1 border-border hover:border-primary/30">
+              <CardHeader>
+                <CardTitle className="text-primary font-semibold">{feature.title}</CardTitle>
+              </CardHeader>
+              <CardContent>
+                <CardDescription className="text-muted-foreground">
+                  {feature.description}
+                </CardDescription>
+              </CardContent>
+            </Card>
           ))}
-        </Grid>
-      </Container>
-    </FeaturesSection>
+        </div>
+      </div>
+    </section>
   );
 };
 

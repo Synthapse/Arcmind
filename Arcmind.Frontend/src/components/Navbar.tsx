@@ -1,45 +1,58 @@
 import React from 'react';
-import { AppBar, Toolbar, Typography, Button, Box } from '@mui/material';
-import { styled } from '@mui/material/styles';
-
-const StyledAppBar = styled(AppBar)(({ theme }) => ({
-  backgroundColor: 'transparent',
-  boxShadow: 'none',
-  position: 'absolute',
-  top: 0,
-  left: 0,
-  right: 0,
-  zIndex: 10,
-}));
-
-const Logo = styled(Typography)(({ theme }) => ({
-  fontFamily: '"Montserrat", sans-serif',
-  fontWeight: 700,
-  fontSize: '1.5rem',
-  color: theme.palette.text.primary,
-  marginRight: 'auto',
-}));
-
-const NavButton = styled(Button)(({ theme }) => ({
-  color: theme.palette.text.secondary,
-  marginLeft: theme.spacing(2),
-  fontSize: '0.85rem',
-  '&:hover': {
-    color: theme.palette.text.primary,
-  },
-}));
+import { useNavigate, Link } from 'react-router-dom';
+import {
+  NavigationMenu,
+  NavigationMenuContent,
+  NavigationMenuItem,
+  NavigationMenuLink,
+  NavigationMenuList,
+  NavigationMenuTrigger,
+  navigationMenuTriggerStyle,
+} from "./ui/navigation-menu";
+import { Button } from "./ui/button";
+import { cn } from "../lib/utils";
+import ThemeToggle from './ui/ThemeToggle';
 
 const Navbar: React.FC = () => {
+  const navigate = useNavigate();
+
   return (
-    <StyledAppBar position="static">
-      <Toolbar>
-        <Logo variant="h6">Arcmind</Logo>
-        <Box sx={{ flexGrow: 1 }} />
-        {/* <NavButton>Features</NavButton>
-        <NavButton>About</NavButton>
-        <NavButton>Contact</NavButton> */}
-      </Toolbar>
-    </StyledAppBar>
+    <div className="border-b border-border bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60 sticky top-0 z-40 w-full">
+      <div className="container flex h-16 items-center">
+        <div className="mr-4 hidden md:flex">
+          <Link 
+            to="/" 
+            className="mr-6 flex items-center space-x-2 text-primary font-semibold text-xl"
+          >
+            Arcmind
+          </Link>
+          <NavigationMenu>
+            <NavigationMenuList>
+              <NavigationMenuItem>
+                <Link to="/">
+                  <div className={navigationMenuTriggerStyle()}>
+                    Home
+                  </div>
+                </Link>
+              </NavigationMenuItem>
+              <NavigationMenuItem>
+                <Link to="/practical-needs">
+                  <div className={navigationMenuTriggerStyle()}>
+                    Practical Needs
+                  </div>
+                </Link>
+              </NavigationMenuItem>
+            </NavigationMenuList>
+          </NavigationMenu>
+        </div>
+        <div className="flex-1 justify-end flex items-center space-x-4">
+          <ThemeToggle />
+          <Button onClick={() => window.open('https://form.typeform.com/to/zufeXJvl', '_blank')}>
+            Create Profile
+          </Button>
+        </div>
+      </div>
+    </div>
   );
 };
 
