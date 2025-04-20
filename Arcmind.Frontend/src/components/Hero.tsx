@@ -1,6 +1,6 @@
 import React from 'react';
 import { Button } from './ui/button';
-import heroBg from '../assets/hero-bg3.jpg';
+import heroBg from '../assets/hero-bg4.jpeg';
 
 const Hero: React.FC = () => {
   const handleCreateProfile = () => {
